@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine 💖</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 320px;
+    }
+    button {
+      padding: 14px 22px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .yes { background: #ff4d6d; color: white; }
+    .no { background: #ccc; }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>Will you be my Valentine?❤️</h2>
+    <button class="yes" onclick="sendAnswer('Yes')">Yes</button>
+    <button class="no" onclick="sendAnswer('No')">No</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+  function sendAnswer(answer) {
+    const formData = new FormData();
+    formData.append("response", answer);
+
+    fetch("https://formspree.io/f/mkozdnvd", {
+      method: "POST",
+      body: formData
+    }).then(() => {
+      document.getElementById("message").innerText =
+        answer === "Yes"
+          ? "YAYYYYYY THANK YOUUUU❤️❤️❤️❤️❤️"
+          : "Just say you hate me and dont wanna talk to me ever again😒😒";
+    });
+  }
+</script>
+
+
+</body>
+</html>
